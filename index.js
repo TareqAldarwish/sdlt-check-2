@@ -14,28 +14,28 @@ window.addEventListener('scroll', function () {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // TOGGLE VIDEO MUTE
-    const video = document.getElementById('hero-video');
-    const customCursor = document.getElementById('custom-cursor');
+    // // TOGGLE VIDEO MUTE
+    // const video = document.getElementById('hero-video');
+    // const customCursor = document.getElementById('custom-cursor');
 
-    // Move the custom cursor with the mouse
-    document.addEventListener('mousemove', function (e) {
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
-    });
+    // // Move the custom cursor with the mouse
+    // document.addEventListener('mousemove', function (e) {
+    //     customCursor.style.left = e.clientX + 'px';
+    //     customCursor.style.top = e.clientY + 'px';
+    // });
 
-    // Toggle the mute state and cursor appearance on video click
-    video.addEventListener('click', function () {
-        this.muted = !this.muted;
+    // // Toggle the mute state and cursor appearance on video click
+    // video.addEventListener('click', function () {
+    //     this.muted = !this.muted;
 
-        if (this.muted) {
-            customCursor.classList.remove('unmute-cursor');
-            customCursor.classList.add('mute-cursor');
-        } else {
-            customCursor.classList.remove('mute-cursor');
-            customCursor.classList.add('unmute-cursor');
-        }
-    });
+    //     if (this.muted) {
+    //         customCursor.classList.remove('unmute-cursor');
+    //         customCursor.classList.add('mute-cursor');
+    //     } else {
+    //         customCursor.classList.remove('mute-cursor');
+    //         customCursor.classList.add('unmute-cursor');
+    //     }
+    // });
 
     // Section 2 Title Transition
     const section2ObserverOptions = {
