@@ -321,7 +321,7 @@ a:not(.image-link).inverted div::before {
 /* HERO SECTION */
 .hero {
     height: 90svh;
-    cursor: none;
+    /* cursor: none; */
 }
 #custom-cursor {
     position: absolute;
