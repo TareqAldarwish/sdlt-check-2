@@ -39,13 +39,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Section 2 Title Transition
     const section2ObserverOptions = {
-        threshold: 0.3
+        threshold: 0.5
     };
 
     const section2Observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.querySelector('.title-part').classList.add('visible');
+            } else {
+                entry.target.querySelector('.title-part').classList.remove('visible');
+                
             }
         });
     }, section2ObserverOptions);
@@ -82,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 const dots = entry.target.querySelectorAll('.service .service-name-dot');
-                console.log(dots)
                 dots.forEach(dot => {
                     dot.style.setProperty('--_animation-duration', `${animationDuration}ms`);
                     dot.classList.add('play-animation');
@@ -100,10 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
         lastTimestamp = currentTimestamp;
     }, servicesObserverOptions);
 
-    const servicesSection = document.querySelector('.services');
-    if (servicesSection) {
+    // Observe each .services section individually
+    const servicesSections = document.querySelectorAll('.services');
+    servicesSections.forEach(servicesSection => {
         servicesObserver.observe(servicesSection);
-    }
+    });
+
 
     // Timeline Alternation
     const timelineParts = document.querySelectorAll('.timeline-part');
@@ -161,10 +165,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const sectionHeight = sectionRect.height;
         const circleHeight = timelineCircle.offsetHeight;
         const sectionMidpoint = sectionRect.height / 2 - 200;
-        const scrollOffset = window.innerHeight - sectionRect.top;
+        const scrollOffset = (window.innerHeight - sectionRect.top);
 
         // Calculate the maximum top value to ensure the circle doesn't go beyond the bottom of the section
-        const maxTop = sectionHeight - circleHeight;
+        const maxTop = sectionHeight - circleHeight - 100;
 
         if (scrollOffset > sectionMidpoint) {
             // Ensure the circle's top position is within the bounds of the section

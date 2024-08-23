@@ -75,7 +75,7 @@ h6 {
     --clr-bg: #0f0f0f;
     --clr-black: #0f0f0f;
     --font-main: sans-serif;
-    --font-header: "PoppinsRegular"; 
+    --font-header: "PoppinsRegular";
     --fs-xl: 3rem;
     --fs-lg: 2rem;
     --fs-md: 1.25rem;
@@ -180,6 +180,7 @@ a:not(.image-link) {
         border-top-right-radius 1000ms,
         border-bottom-left-radius 1000ms;
 }
+
 a:not(.image-link) div {
     padding: .5rem 1rem;
     border-top-right-radius: 10px;
@@ -188,6 +189,7 @@ a:not(.image-link) div {
         border-top-right-radius 1000ms,
         border-bottom-left-radius 1000ms;
 }
+
 a:not(.image-link) div::after,
 a:not(.image-link) div::before {
     content: "";
@@ -197,12 +199,14 @@ a:not(.image-link) div::before {
     border: 0px solid var(--clr-primary);
     transition: width 1000ms, height 1000ms;
 }
+
 a:not(.image-link) div::after {
     top: -1px;
     left: -1px;
     border-top: 1px solid var(--clr-primary);
     border-left: 1px solid var(--clr-primary);
 }
+
 a:not(.image-link) div::before {
     bottom: -1px;
     right: -1px;
@@ -211,23 +215,28 @@ a:not(.image-link) div::before {
 }
 
 a:not(.-link):hover div::after,
-a:not(.imaimagege-link):focus-visible div::after,
+a:not(.image-link):focus-visible div::after,
 a:not(.image-link):hover div::before,
 a:not(.image-link):focus-visible div::before {
     width: 101%;
     height: 101%;
 }
 
+a:not(.image-link).inverted div {
+    padding: .25rem .5rem;
+}
 
 
 a:not(.image-link).inverted div::after,
 a:not(.image-link).inverted div::before {
     border: 0px solid var(--clr-black);
 }
+
 a:not(.image-link).inverted div::after {
     border-top: 1px solid var(--clr-black);
     border-left: 1px solid var(--clr-black);
 }
+
 a:not(.image-link).inverted div::before {
     border-bottom: 1px solid var(--clr-black);
     border-right: 1px solid var(--clr-black);
@@ -273,6 +282,7 @@ a:not(.image-link).inverted div::before {
         border-bottom-left-radius 1000ms;
 
 }
+
 .btn.btn-inverted {
     color: var(--clr-primary);
     background-color: var(--clr-bg);
@@ -323,19 +333,22 @@ a:not(.image-link).inverted div::before {
     height: 90svh;
     cursor: none;
 }
+
 #custom-cursor {
     position: absolute;
     width: 32px;
     height: 32px;
     background-size: contain;
     background-repeat: no-repeat;
-    pointer-events: none; 
+    pointer-events: none;
     transition: transform 0.3s ease, background-image 0.3s ease;
     transform: translate(-50%, -50%);
 }
+
 .unmute-cursor {
     background-image: url('./img/mute.png');
 }
+
 .mute-cursor {
     background-image: url('./img/sound.png');
 }
@@ -385,7 +398,7 @@ a:not(.image-link).inverted div::before {
         opacity: .2;
     }
 
-    25% {
+    /* 25% {
         translate: 0 0;
         opacity: .6;
 
@@ -395,7 +408,7 @@ a:not(.image-link).inverted div::before {
         translate: -5%;
         opacity: 1;
 
-    }
+    } */
 
     100% {
         translate: 0;
@@ -484,6 +497,7 @@ a:not(.image-link).inverted div::before {
     min-height: 100svh;
     display: grid;
     align-items: center;
+    padding-block-start: 6rem;
 
 }
 
@@ -495,7 +509,7 @@ a:not(.image-link).inverted div::before {
 }
 
 .title-part.visible {
-    animation: slide-in 2000ms forwards ease-in-out;
+    animation: slide-in 800ms forwards ease-in-out;
 }
 
 .title-part .handle {
@@ -821,6 +835,10 @@ a:not(.image-link).inverted div::before {
     transition: top 1000ms ease-in;
 }
 
+.section-4 {
+    padding-block: 4rem;
+}
+
 
 /* FOOTER */
 .footer {
@@ -829,10 +847,11 @@ a:not(.image-link).inverted div::before {
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    padding: 5rem 10rem;
+    padding: 3rem 10rem;
     display: grid;
     align-items: flex-end;
 }
+
 .footer::before {
     content: '';
     width: 25px;
@@ -845,8 +864,9 @@ a:not(.image-link).inverted div::before {
     z-index: -1;
     translate: -50% -100px;
 }
+
 .footer.fill::before {
-        animation: fill-bg 2000ms forwards;
+    animation: fill-bg 2000ms forwards;
 }
 
 .footer .main {
@@ -857,29 +877,36 @@ a:not(.image-link).inverted div::before {
 .footer .main .logo {
     width: 35%;
 }
+
 .footer .main .title {
     font-size: 2rem;
 }
+
 .footer-navigation {
     display: flex;
     justify-content: space-between;
-    margin-block-start: 5rem;
+    margin-block-start: 3rem;
     font-size: 1.25rem;
 }
-.footer-navigation a,.footer-navigation p {
+
+.footer-navigation a,
+.footer-navigation p {
     font-size: inherit;
     font-weight: bold;
     color: var(--clr-bg);
 
 }
+
 .social-media {
     margin-block: .5rem;
     gap: .5rem;
 }
+
 .social-icon {
     height: 30px;
     transition: scale 200ms ease-in-out;
 }
+
 .social-icon:hover,
 .social-icon:focus-within {
     scale: 1.1;
@@ -890,6 +917,7 @@ a:not(.image-link).inverted div::before {
         width: 60svw;
         height: 80svw;
     }
+
     to {
         width: 150svw;
         height: 150svw;
@@ -902,14 +930,17 @@ a:not(.image-link).inverted div::before {
     flex-direction: column;
     gap: .2rem;
 }
+
 .row-flex {
     display: flex;
     flex-direction: row;
     gap: .2rem;
 }
+
 .gap-xl {
     gap: 8rem;
 }
+
 .gap-lg {
     gap: 4rem;
 }
