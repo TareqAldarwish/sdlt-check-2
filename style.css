@@ -67,13 +67,13 @@ h6 {
 
 /* VARS */
 :root {
-    --clr-primary: #1cee10;
+    --clr-primary: #dbff00;
     --clr-second: #3508fe;
     --clr-third: #fe085a;
     --clr-grey: #2e2e2e;
     --clr-white: #e7f5df;
-    --clr-bg: #0f0f0f;
-    --clr-black: #0f0f0f;
+    --clr-bg: #000;
+    --clr-black: #000;
     --font-main: sans-serif;
     --font-header: "PoppinsRegular";
     --fs-xl: 3rem;
@@ -875,7 +875,7 @@ a:not(.image-link).inverted div::before {
 }
 
 .footer .main .logo {
-    width: 35%;
+    width: 20%;
 }
 
 .footer .main .title {
@@ -948,3 +948,4 @@ a:not(.image-link).inverted div::before {
 .gap-md {
     gap: 1rem;
 }
+

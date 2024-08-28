@@ -24,19 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
         customCursor.style.top = e.clientY + 'px';
     });
 
-    // Toggle the mute state and cursor appearance on video click
-    video.addEventListener('click', function () {
-        this.muted = !this.muted;
+    if (video) {
+        // Toggle the mute state and cursor appearance on video click
+        video.addEventListener('click', function () {
+            this.muted = !this.muted;
 
-        if (this.muted) {
-            customCursor.classList.remove('unmute-cursor');
-            customCursor.classList.add('mute-cursor');
-        } else {
-            customCursor.classList.remove('mute-cursor');
-            customCursor.classList.add('unmute-cursor');
-        }
-    });
-
+            if (this.muted) {
+                customCursor.classList.remove('unmute-cursor');
+                customCursor.classList.add('mute-cursor');
+            } else {
+                customCursor.classList.remove('mute-cursor');
+                customCursor.classList.add('unmute-cursor');
+            }
+        });
+    }
     // Section 2 Title Transition
     const section2ObserverOptions = {
         threshold: 0.5
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 entry.target.querySelector('.title-part').classList.add('visible');
             } else {
                 entry.target.querySelector('.title-part').classList.remove('visible');
-                
+
             }
         });
     }, section2ObserverOptions);
@@ -160,39 +161,40 @@ document.addEventListener("DOMContentLoaded", function () {
     const section3 = document.querySelector('.section-3');
     let isScrolling;
 
-    window.addEventListener('scroll', function () {
-        const sectionRect = section3.getBoundingClientRect();
-        const sectionHeight = sectionRect.height;
-        const circleHeight = timelineCircle.offsetHeight;
-        const sectionMidpoint = sectionRect.height / 2 - 200;
-        const scrollOffset = (window.innerHeight - sectionRect.top);
+    if (section3 && timelineCircle) {
+        window.addEventListener('scroll', function () {
+            const sectionRect = section3.getBoundingClientRect();
+            const sectionHeight = sectionRect.height;
+            const circleHeight = timelineCircle.offsetHeight;
+            const sectionMidpoint = sectionRect.height / 2 - 200;
+            const scrollOffset = (window.innerHeight - sectionRect.top);
 
-        // Calculate the maximum top value to ensure the circle doesn't go beyond the bottom of the section
-        const maxTop = sectionHeight - circleHeight - 100;
+            // Calculate the maximum top value to ensure the circle doesn't go beyond the bottom of the section
+            const maxTop = sectionHeight - circleHeight - 100;
 
-        if (scrollOffset > sectionMidpoint) {
-            // Ensure the circle's top position is within the bounds of the section
-            const circleTop = Math.max(0, Math.min(maxTop, scrollOffset - sectionMidpoint));
-            timelineCircle.style.top = `${circleTop}px`;
-        } else {
-            // Reset to top position if not scrolled past the midpoint
-            timelineCircle.style.top = '0px';
-        }
+            if (scrollOffset > sectionMidpoint) {
+                // Ensure the circle's top position is within the bounds of the section
+                const circleTop = Math.max(0, Math.min(maxTop, scrollOffset - sectionMidpoint));
+                timelineCircle.style.top = `${circleTop}px`;
+            } else {
+                // Reset to top position if not scrolled past the midpoint
+                timelineCircle.style.top = '0px';
+            }
 
-        // Clear the timeout if the user is scrolling
-        window.clearTimeout(isScrolling);
+            // Clear the timeout if the user is scrolling
+            window.clearTimeout(isScrolling);
 
-        // Set a timeout to run after scrolling ends
-        isScrolling = setTimeout(function () {
-            // Stop changing the position after the user stops scrolling
-            timelineCircle.style.transition = 'top 1000ms ease-out';
-        }, 100); // 100ms delay before considering the user has stopped scrolling
-    });
-
-    window.addEventListener('scroll', function () {
-        // Remove transition during scrolling to make the circle move instantly
-        timelineCircle.style.transition = 'none';
-    });
+            // Set a timeout to run after scrolling ends
+            isScrolling = setTimeout(function () {
+                // Stop changing the position after the user stops scrolling
+                timelineCircle.style.transition = 'top 1000ms ease-out';
+            }, 100); // 100ms delay before considering the user has stopped scrolling
+        });
+        window.addEventListener('scroll', function () {
+            // Remove transition during scrolling to make the circle move instantly
+            timelineCircle.style.transition = 'none';
+        });
+    }
 
     // FOOTER FILLING 
     const footerObserverOptions = {
