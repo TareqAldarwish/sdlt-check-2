@@ -19,11 +19,13 @@
 }
 .pb-content .paragraph-section .content {
     margin-block-end: .5rem;
+    color: var(--clr-white-alt);
 }
-.pb-content video {
-    padding-block: 5rem;
-    width: 90%;
+.pb-content .media * {
+    margin-block: 5rem;
+    width: 60%;
     margin-inline: auto;
+    border-radius: 20px;
 }
 
 .pb-content .flex-columns {
@@ -32,6 +34,8 @@
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     gap: 10rem;
+    border-radius: 20px;
+
 }
 .pb-content ul {
     display: flex;
