@@ -34,8 +34,10 @@
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     gap: 10rem;
-    border-radius: 20px;
 
+}
+.flex-columns img {
+    border-radius: 20px;
 }
 .pb-content ul {
     display: flex;
