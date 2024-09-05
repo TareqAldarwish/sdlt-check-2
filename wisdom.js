@@ -2,27 +2,27 @@ const wisdomArticles = [
     {
         img: './img/wisdom-1.png',
         title: 'A company you can trust - CapEx Associates',
-        url: '/capex-associates.html#',
+        url: './capex-associates.html#',
     },
     {
         img: './img/wisdom-2.png',
         title: 'MDR update',
-        url: '/mdr-update.html#',
+        url: './mdr-update.html#',
     },
     {
         img: './img/wisdom-3.png',
         title: 'SDLT for Holiday Lets',
-        url: '/sdlt-holiday-lets.html#',
+        url: './sdlt-holiday-lets.html#',
     },
     {
         img: './img/wisdom-4.png',
         title: 'Uninhabitability relief update',
-        url: '/uninhabitability-relief-update.html#',
+        url: './uninhabitability-relief-update.html#',
     },
     {
         img: './img/wisdom-5.png',
         title: "Chancellor's statement on 23 September",
-        url: '/chancellors-statement-on-23-september.html#',
+        url: './chancellors-statement-on-23-september.html#',
     },
 ];
 
