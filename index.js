@@ -18,13 +18,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById('hero-video');
     const customCursor = document.getElementById('custom-cursor');
 
-    // Move the custom cursor with the mouse
-    document.addEventListener('mousemove', function (e) {
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
-    });
+    if (video && customCursor) {
 
-    if (video) {
+        // Move the custom cursor with the mouse
+        document.addEventListener('mousemove', function (e) {
+            // Get the bounding rectangle of the video element
+            const videoRect = video.getBoundingClientRect();
+
+            // Check if the cursor is inside the video boundaries
+            const isCursorInsideVideo = (
+                e.clientX >= videoRect.left &&
+                e.clientX <= videoRect.right &&
+                e.clientY >= videoRect.top &&
+                e.clientY <= videoRect.bottom
+            );
+
+            // Move the custom cursor with the mouse
+            customCursor.style.left = e.clientX + 'px';
+            customCursor.style.top = e.clientY + 'px';
+
+            // Show or hide the custom cursor based on its position
+            if (isCursorInsideVideo) {
+                customCursor.style.display = 'block';
+            } else {
+                customCursor.style.display = 'none';
+            }
+        });
+
         // Toggle the mute state and cursor appearance on video click
         video.addEventListener('click', function () {
             this.muted = !this.muted;
@@ -38,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    
     // Section 2 Title Transition
     const section2ObserverOptions = {
         threshold: 0.5

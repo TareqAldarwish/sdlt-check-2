@@ -63,6 +63,7 @@ h6 {
     font-weight: normal;
 
 }
+
 @font-face {
     font-family: ZuumeBold;
     src: url("./fonts/ZuumeBold.woff");
@@ -74,15 +75,17 @@ h6 {
 /* VARS */
 :root {
     --clr-primary: #dbff00;
+    --clr-primary-dark: #e7ff4a;
     --clr-second: #3508fe;
     --clr-third: #fe085a;
     --clr-grey: #2e2e2e;
     --clr-white: #e7f5df;
+    --clr-white-light: #f5f5f5;
     --clr-white-alt: #acacac;
     --clr-bg: #000;
     --clr-black: #000;
     --font-main: sans-serif;
-    --font-header: "ZuumeRegular" , sans-serif;
+    --font-header: "ZuumeRegular", sans-serif;
     --fs-xl: 3rem;
     --fs-lg: 2rem;
     --fs-md: 1.25rem;
@@ -105,10 +108,12 @@ h6 {
     font-family: var(--font-header), var(--font-main);
     letter-spacing: 1px;
 }
+
 .font-zuume {
     font-family: var(--font-header);
     letter-spacing: 1px;
 }
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
     width: 5px;
@@ -225,10 +230,12 @@ a:not(.image-link) div::before {
     border-right: 1px solid var(--clr-primary);
 }
 
-a:not(.-link):hover div::after,
+a:not(.image-link):hover div::after,
 a:not(.image-link):focus-visible div::after,
 a:not(.image-link):hover div::before,
-a:not(.image-link):focus-visible div::before {
+a:not(.image-link):focus-visible div::before,
+a.active div::before,
+a.active div::after {
     width: 101%;
     height: 101%;
 }
@@ -337,6 +344,211 @@ a:not(.image-link).inverted div::before {
 .btn:focus-visible {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
+}
+
+
+/* CTA BUTTON */
+@keyframes cta-shake {
+    0% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+
+    4% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+
+    8% {
+        -webkit-transform: rotate(-14deg);
+        transform: rotate(-14deg)
+    }
+
+    12% {
+        -webkit-transform: rotate(14deg);
+        transform: rotate(14deg)
+    }
+
+    16% {
+        -webkit-transform: rotate(-18deg);
+        transform: rotate(-18deg)
+    }
+
+    20% {
+        -webkit-transform: rotate(18deg);
+        transform: rotate(18deg)
+    }
+
+    24% {
+        -webkit-transform: rotate(-14deg);
+        transform: rotate(-14deg)
+    }
+
+    28% {
+        -webkit-transform: rotate(14deg);
+        transform: rotate(14deg)
+    }
+
+    32% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+
+    36% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+
+    40% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes ring {
+    0% {
+        -webkit-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+        transform: rotate(-15deg)
+    }
+
+    2% {
+        -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+
+    4% {
+        -webkit-transform: rotate(-18deg);
+        -ms-transform: rotate(-18deg);
+        transform: rotate(-18deg)
+    }
+
+    6% {
+        -webkit-transform: rotate(18deg);
+        -ms-transform: rotate(18deg);
+        transform: rotate(18deg)
+    }
+
+    8% {
+        -webkit-transform: rotate(-22deg);
+        -ms-transform: rotate(-22deg);
+        transform: rotate(-22deg)
+    }
+
+    10% {
+        -webkit-transform: rotate(22deg);
+        -ms-transform: rotate(22deg);
+        transform: rotate(22deg)
+    }
+
+    12% {
+        -webkit-transform: rotate(-18deg);
+        -ms-transform: rotate(-18deg);
+        transform: rotate(-18deg)
+    }
+
+    14% {
+        -webkit-transform: rotate(18deg);
+        -ms-transform: rotate(18deg);
+        transform: rotate(18deg)
+    }
+
+    16% {
+        -webkit-transform: rotate(-12deg);
+        -ms-transform: rotate(-12deg);
+        transform: rotate(-12deg)
+    }
+
+    18% {
+        -webkit-transform: rotate(12deg);
+        -ms-transform: rotate(12deg);
+        transform: rotate(12deg)
+    }
+
+    20% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes sound-wave {
+    25% {
+        scale: 1;
+        opacity: 1;
+    }
+    50%,100% {
+        scale: 1.5;
+        opacity: 0;
+    }
+}
+
+.cta-btn {
+    cursor: pointer;
+    position: fixed;
+    inset-block-end: 15px;
+    inset-inline-start: calc(-1 * (1rem + 9ch));
+    transition: inset-inline-start 400ms cubic-bezier(.88,.06,.56,1.17);
+}
+
+.cta-btn button {
+    display: inline-flex;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--clr-primary-dark);
+    outline: 3px solid var(--clr-black);
+    font-family: var(--font-header);
+    gap: 1rem;
+    padding: .8rem 1rem;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 20px 1px hsl(from var(--clr-grey) h s l / 0.5);
+}
+
+.cta-btn svg {
+    width: 30px;
+    height: 30px;
+    overflow: visible;
+}
+
+.cta-btn svg #phone {
+    animation: cta-shake alternate-reverse infinite ease-in;
+    animation-duration: 3500ms;
+    transform-origin: center;
+}
+
+.cta-btn svg #first_wave,
+.cta-btn svg #second_wave,
+.cta-btn svg #third_wave {
+    opacity: 0;
+    scale: 0;
+    animation: sound-wave 4000ms infinite linear;
+    transform-origin: center;
+}
+
+.cta-btn svg #second_wave {
+    animation-delay: 300ms;
+}
+
+.cta-btn svg #third_wave {
+    animation-delay: 500ms;
+}
+
+.cta-btn button .text {
+    font-size: var(--fs-md);
+}
+
+.cta-btn:hover,
+.cta-btn:focus-within {
+    inset-inline-start: 0;
+    
+}
+.cta-btn:hover svg #phone,
+.cta-btn:focus-within svg #phone {
+    animation-duration: 2000ms;
+    
 }
 
 /* HERO SECTION */
@@ -959,4 +1171,3 @@ a:not(.image-link).inverted div::before {
 .gap-md {
     gap: 1rem;
 }
-
