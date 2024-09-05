@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         entries.forEach(entry => {
             const articleText = articleSection.querySelector('.article-text')
             if (entry.isIntersecting) {
-                [...articleSection.children, ...articleText?.children].forEach((child, index) => {
+                [...articleText?.children].forEach((child, index) => {
                     child.style.animation = `fade-in 200ms ease-out ${index * 100}ms forwards`
                 })
             }
