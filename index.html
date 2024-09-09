@@ -22,16 +22,35 @@
                         <div>Property Buyers </div>
                     </a>
                 </li>
-                <li><a href="./wisdom.html#">
-                        <div>Wisdom</div>
+                <li><a href="./news-and-updates.html#">
+                        <div>News & Updates</div>
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="right">
-            <button class="btn">Let's Talk</button>
+            <button data-demo-btn class="btn">Book a Demo</button>
         </div>
+        <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
     </header>
+    <aside id="sidebar" class="sidebar">
+        <div class="head">
+            <div class="logo">
+                <a href="./#" class="image-link">
+                    <img src="./img/logo.svg" alt="SDLT Check Logo">
+                </a>
+            </div>
+            <button class="close-sidebar" aria-label="Close menu">&times;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./property-buyers.html#">Property Buyers</a></li>
+                <li><a href="./news-and-updates.html#">News & Updates</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div id="overlay" class="page-overlay"></div>
+
     <section class="hero">
         <video id="hero-video" muted autoplay loop>
             <source src="./img/hero-video.webm" type="video/webm">
@@ -44,7 +63,7 @@
             <div class="handle">
                 <div class="circle"></div>
             </div>
-            <h2 class="title ">
+            <h2 class="title">
                 Our
                 <span class="has-text-primary">advanced</span>
                 technology, designed by
@@ -143,7 +162,7 @@
         <div class="services">
             <div class="service">
                 <span class="service-name-wrapper has-text-primary">
-                    <span class="service-name font-zuume">Let's Talk</span>
+                    <span class="service-name font-zuume">Book a Demo</span>
                     <span class="service-name-dot reversed"></span>
                 </span>
                 <p class="description">Book a call with SDLT Check to streamline SDLT calculations and gain expert
@@ -165,8 +184,8 @@
                     <a class="inverted" href="./property-buyers.html#">
                         <div>Property Buyers</div>
                     </a>
-                    <a class="inverted" href="./wisdom.html#">
-                        <div>Wisdom</div>
+                    <a class="inverted" href="./news-and-updates.html#">
+                        <div>News & Updates</div>
                     </a>
                 </div>
                 <div class="col-flex gap-lg">
@@ -183,7 +202,7 @@
             </div>
 
             <div class="col-flex gap-md">
-                <button class="btn btn-primary btn-inverted">Let's Talk</button>
+                <button data-demo-btn class="btn btn-primary btn-inverted">Book a Demo</button>
                 <div>
                     <p class="font-secondary">
                         Follow Us!
@@ -203,7 +222,7 @@
         </div>
     </div>
     <div class="cta-btn">
-        <button>
+        <button data-demo-btn>
             <span class="text">
                 Book a Demo
             </span>

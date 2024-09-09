@@ -1,39 +1,39 @@
-const wisdomArticles = [
+const newsArticles = [
     {
-        img: './img/wisdom-1.png',
+        img: './img/news-1.png',
         title: 'A company you can trust - CapEx Associates',
         url: './capex-associates.html#',
     },
     {
-        img: './img/wisdom-2.png',
+        img: './img/news-2.png',
         title: 'MDR update',
         url: './mdr-update.html#',
     },
     {
-        img: './img/wisdom-3.png',
+        img: './img/news-3.png',
         title: 'SDLT for Holiday Lets',
         url: './sdlt-holiday-lets.html#',
     },
     {
-        img: './img/wisdom-4.png',
+        img: './img/news-4.png',
         title: 'Uninhabitability relief update',
         url: './uninhabitability-relief-update.html#',
     },
     {
-        img: './img/wisdom-5.png',
+        img: './img/news-5.png',
         title: "Chancellor's statement on 23 September",
         url: './chancellors-statement-on-23-september.html#',
     },
 ];
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
-wisdomArticles.forEach(article => {
+newsArticles.forEach(article => {
     if (cardsWrapper) {
         const cardHTML = `
-                <div class="wisdom-card">
+                <div class="news-card">
             <a class="image-link" href="${article.url}">
                 <div class="image-container">
-                    <img class="wisdom-image" src="${article.img}" alt="${article.title}">
+                    <img class="news-image" src="${article.img}" alt="${article.title}">
                     <div class="overlay">
                         <span class="overlay-text">See more
                             <div class="arrow-right">
@@ -52,15 +52,15 @@ wisdomArticles.forEach(article => {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Wisdom main page Transition
-    const wisdomObserver = {
+    // News & Updates main page Transition
+    const newsObserver = {
         threshold: 0
     };
 
-    const wisdomSectionObserver = new IntersectionObserver(function (entries) {
+    const newsSectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const cards = entry.target.querySelectorAll('.wisdom-card');
+                const cards = entry.target.querySelectorAll('.news-card');
                 [...cards].forEach((card, index) => {
                     card.style.translate = '0 40px'
                     card.style.opacity = '1'
@@ -68,11 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             }
         });
-    }, wisdomObserver);
+    }, newsObserver);
 
-    const wisdomSection = document.querySelector('.wisdom-content');
-    if (wisdomSection) {
-        wisdomSectionObserver.observe(wisdomSection);
+    const newsSection = document.querySelector('.news-content');
+    if (newsSection) {
+        newsSectionObserver.observe(newsSection);
     }
 
     // Article main page Transition

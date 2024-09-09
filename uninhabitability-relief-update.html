@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="article.css">
     <script type="text/javascript" src="index.js"></script>
-    <script type="text/javascript" defer src="wisdom.js"></script>
+    <script type="text/javascript" defer src="news-and-updates.js"></script>
 
 </head>
 
@@ -25,16 +25,37 @@
                         <div>Property Buyers </div>
                     </a>
                 </li>
-                <li><a href="./wisdom.html#">
-                        <div>Wisdom</div>
+                <li><a href="./news-and-updates.html#">
+                        <div>News & Updates</div>
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="right">
-            <button class="btn">Let's Talk</button>
+            <button data-demo-btn class="btn">Book a Demo</button>
         </div>
+        <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+
     </header>
+
+    <aside id="sidebar" class="sidebar">
+        <div class="head">
+            <div class="logo">
+                <a href="./#" class="image-link">
+                    <img src="./img/logo.svg" alt="SDLT Check Logo">
+                </a>
+            </div>
+            <button class="close-sidebar" aria-label="Close menu">&times;</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./property-buyers.html#">Property Buyers</a></li>
+                <li><a href="./news-and-updates.html#">News & Updates</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div id="overlay" class="page-overlay"></div>
+
     <div class="article-content">
         <div class="article-header">
             <h1 class="headline">
@@ -42,7 +63,7 @@
             </h1>
         </div>
         <div class="image-container">
-            <img src="./img/wisdom-4.png" alt="Uninhabitability Relief Update">
+            <img src="./img/news-4.png" alt="Uninhabitability Relief Update">
         </div>
         <div class="article-text">
             <div class="paragraph">We've noticed a growing number of inquiries regarding the exemption of residential properties from Stamp
@@ -112,8 +133,8 @@
                     <a class="inverted" href="./property-buyers.html#">
                         <div>Property Buyers</div>
                     </a>
-                    <a class="inverted" href="./wisdom.html#">
-                        <div>Wisdom</div>
+                    <a class="inverted" href="./news-and-updates.html#">
+                        <div>News & Updates</div>
                     </a>
                 </div>
                 <div class="col-flex gap-lg">
@@ -130,7 +151,7 @@
             </div>
 
             <div class="col-flex gap-md">
-                <button class="btn btn-primary btn-inverted">Let's Talk</button>
+                <button data-demo-btn class="btn btn-primary btn-inverted">Book a Demo</button>
                 <div>
                     <p class="font-secondary">
                         Follow Us!
@@ -150,7 +171,7 @@
         </div>
     </div>
     <div class="cta-btn">
-        <button>
+        <button data-demo-btn>
             <span class="text">
                 Book a Demo
             </span>

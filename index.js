@@ -14,6 +14,29 @@ window.addEventListener('scroll', function () {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    // MOBILE SIDEBAR
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebar = document.querySelector('.close-sidebar');
+    const overlay = document.getElementById('overlay');
+
+    menuToggle.addEventListener('click', () => {
+        sidebar.style.translate = '0';
+        overlay.classList.add('active'); // Show the overlay
+
+    });
+
+    closeSidebar.addEventListener('click', () => {
+        sidebar.style.translate = '-100%';
+        overlay.classList.remove('active'); // Hide the overlay
+    });
+    overlay.addEventListener('click', () => {
+        sidebar.style.translate = '-100%';
+        overlay.classList.remove('active'); // Hide the overlay
+    });
+
+
+
     // TOGGLE VIDEO MUTE
     const video = document.getElementById('hero-video');
     const customCursor = document.getElementById('custom-cursor');
@@ -58,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    
+
     // Section 2 Title Transition
     const section2ObserverOptions = {
         threshold: 0.5
@@ -68,9 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.querySelector('.title-part').classList.add('visible');
-            } else {
-                entry.target.querySelector('.title-part').classList.remove('visible');
-
             }
         });
     }, section2ObserverOptions);
@@ -235,4 +255,58 @@ document.addEventListener("DOMContentLoaded", function () {
         footerObserver.observe(footer);
     }
 
+    const popupHTML = `
+    <div id="demoPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Book a Demo</h2>
+            <p>Get expert advice on Stamp Duty Land Tax (SDLT) from our team. Choose a time that works best for you to meet with one of our specialists.</p>
+            <ul>
+                <li><a class="image-link" href="https://calendly.com/ben-gatford/meeting" target="_blank"><span>Book with Ben Gatford.</span></a></li>
+                <li><a class="image-link" href="https://calendly.com/adamharris-capex/15min" target="_blank"><span>Book with Adam Harris.</span></a></li>
+            </ul>
+        </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+    // POPUP FUNCTIONALITY
+    const demoBtns = document.querySelectorAll('[data-demo-btn]');
+
+    demoBtns.forEach(demoBtn => {
+        demoBtn.addEventListener('click', () => {
+            let demoPopup = document.getElementById("demoPopup");
+
+            if (demoPopup) {
+                // Close popup when the close button is clicked
+                document.querySelector(".close-btn").addEventListener('click', () => {
+                    document.getElementById("demoPopup").classList.remove('visible');
+                });
+            } else {
+                const popupHTML = `
+                <div id="demoPopup" class="popup">
+                    <div class="popup-content">
+                        <span class="close-btn">&times;</span>
+                        <h2>Book a Demo</h2>
+                        <p>Get expert advice on Stamp Duty Land Tax (SDLT) from our team. Choose a time that works best for you to meet with one of our specialists.</p>
+                        <ul>
+                            <li><a class="image-link" href="https://calendly.com/ben-gatford/meeting" target="_blank"><span>Book with Ben Gatford.</span></a></li>
+                            <li><a class="image-link" href="https://calendly.com/adamharris-capex/15min" target="_blank"><span>Book with Adam Harris.</span></a></li>
+                        </ul>
+                    </div>
+                </div>`;
+                document.body.insertAdjacentHTML('beforeend', popupHTML);
+            }
+            // Close popup when clicking outside of the popup content
+            window.addEventListener('click', (event) => {
+                if (event.target === document.getElementById("demoPopup")) {
+                    document.getElementById("demoPopup").classList.remove('visible');
+                }
+            });
+
+            // Show the popup
+            document.getElementById("demoPopup").classList.add('visible');
+        });
+    });
 });
+
+
