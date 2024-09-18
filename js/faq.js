@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="title-part">
                         <h3 class="question">${faq.question}</h3>
                         <button class="expand-btn ${i === 0 ? 'rotate' : ''}">
-                            <img class="expand-btn-svg" src="/img/arrow-up.svg" alt="See Answer">
+                            <img class="expand-btn-svg" src="./img/arrow-up.svg" alt="See Answer">
                         </button>
                     </div>
                     <div class="answer ${i === 0 ? 'open' : ''}" style="display: ${i === 0 ? 'block' : 'none'}">
