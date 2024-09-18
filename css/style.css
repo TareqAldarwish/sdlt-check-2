@@ -681,11 +681,11 @@ a:not(.image-link).inverted div::before {
 }
 
 .unmute-cursor {
-    background-image: url('./img/mute.png');
+    background-image: url('../img/mute.png');
 }
 
 .mute-cursor {
-    background-image: url('./img/sound.png');
+    background-image: url('../img/sound.png');
 }
 
 
