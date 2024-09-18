@@ -41,51 +41,49 @@ document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById('hero-video');
     const customCursor = document.getElementById('custom-cursor');
 
-    function setVideoSource() {
+    if (video && customCursor) {
 
-        // Define different video sources for different screen sizes
-        const smallScreenVideo = {
-            webm: './img/hero-video-small.webm',
-            mp4: './img/hero-video-small.mp4'
-        };
-        const largeScreenVideo = {
-            webm: './img/hero-video.webm',
-            mp4: './img/hero-video.mp4'
-        };
+        function setVideoSource() {
 
-        // Check the screen size
-        const isSmallScreen = window.innerWidth <= 768; // Adjust the width breakpoint as needed
+            // Define different video sources for different screen sizes
+            const smallScreenVideo = {
+                webm: './img/hero-video-small.webm',
+                mp4: './img/hero-video-small.mp4'
+            };
+            const largeScreenVideo = {
+                webm: './img/hero-video.webm',
+                mp4: './img/hero-video.mp4'
+            };
 
-        // Clear existing sources
-        while (video.firstChild) {
-            video.removeChild(video.firstChild);
+            // Check the screen size
+            const isSmallScreen = window.innerWidth <= 768; // Adjust the width breakpoint as needed
+
+            // Clear existing sources
+            while (video.firstChild) {
+                video.removeChild(video.firstChild);
+            }
+
+            // Set sources based on screen size
+            const selectedVideo = isSmallScreen ? smallScreenVideo : largeScreenVideo;
+
+            const sourceWebm = document.createElement('source');
+            sourceWebm.src = selectedVideo.webm;
+            sourceWebm.type = 'video/webm';
+
+            const sourceMp4 = document.createElement('source');
+            sourceMp4.src = selectedVideo.mp4;
+            sourceMp4.type = 'video/mp4';
+
+            // Append new sources
+            video.appendChild(sourceWebm);
+            video.appendChild(sourceMp4);
+
+            // Load and play the video
+            video.load();
+            video.play();
         }
 
-        // Set sources based on screen size
-        const selectedVideo = isSmallScreen ? smallScreenVideo : largeScreenVideo;
-        
-        const sourceWebm = document.createElement('source');
-        sourceWebm.src = selectedVideo.webm;
-        sourceWebm.type = 'video/webm';
-
-        const sourceMp4 = document.createElement('source');
-        sourceMp4.src = selectedVideo.mp4;
-        sourceMp4.type = 'video/mp4';
-
-        // Append new sources
-        video.appendChild(sourceWebm);
-        video.appendChild(sourceMp4);
-
-        // Load and play the video
-        video.load();
-        video.play();
-    }
-
-    setVideoSource();
-
-
-
-    if (video && customCursor) {
+        setVideoSource();
 
         // Move the custom cursor with the mouse
         document.addEventListener('mousemove', function (e) {
