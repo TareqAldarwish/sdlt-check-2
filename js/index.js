@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 mp4: './img/hero-video.mp4'
             };
 
-            // Check the screen size
-            const isSmallScreen = window.innerWidth <= 768; // Adjust the width breakpoint as needed
+              // Check the screen size
+            const isSmallScreen = (window.innerWidth <= 1024) || window.innerHeight > window.innerWidth; // Adjust the width breakpoint as needed
 
             // Clear existing sources
             while (video.firstChild) {
@@ -297,58 +297,55 @@ document.addEventListener("DOMContentLoaded", function () {
         footerObserver.observe(footer);
     }
 
+    const demoLinks = [
+        "https://calendly.com/ben-gatford/meeting",
+        "https://calendly.com/adamharris-capex/15min"
+    ];
+
+    // Randomly select one of the two links
+    let selectedLink = demoLinks[Math.floor(Math.random() * demoLinks.length)];
+
+    // Insert the popup into the DOM but keep it hidden
     const popupHTML = `
-    <div id="demoPopup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2>Book a Demo</h2>
-            <p>Get expert advice on Stamp Duty Land Tax (SDLT) from our team. Choose a time that works best for you to meet with one of our specialists.</p>
-            <ul>
-                <li><a class="image-link" href="https://calendly.com/ben-gatford/meeting" target="_blank"><span>Book with Ben Gatford.</span></a></li>
-                <li><a class="image-link" href="https://calendly.com/adamharris-capex/15min" target="_blank"><span>Book with Adam Harris.</span></a></li>
-            </ul>
-        </div>
-    </div>`;
+        <div id="demoPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <h2>Book a Demo</h2>
+                <p>Get expert advice on Stamp Duty Land Tax (SDLT) from our team. Choose a time that works best for you to meet with one of our specialists.</p>
+                    <a class="image-link" href="${selectedLink}" target="_blank"><span>Click here to book a demo</span></a>
+            </div>
+        </div>`;
+    
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 
     // POPUP FUNCTIONALITY
     const demoBtns = document.querySelectorAll('[data-demo-btn]');
+    const demoPopup = document.getElementById("demoPopup");
+    const linkElement = demoPopup.querySelector('.image-link');
 
     demoBtns.forEach(demoBtn => {
         demoBtn.addEventListener('click', () => {
-            let demoPopup = document.getElementById("demoPopup");
+            // Randomize the link each time the button is clicked
+            let selectedLink = demoLinks[Math.floor(Math.random() * demoLinks.length)];
+            linkElement.href = selectedLink;
 
-            if (demoPopup) {
-                // Close popup when the close button is clicked
-                document.querySelector(".close-btn").addEventListener('click', () => {
-                    document.getElementById("demoPopup").classList.remove('visible');
-                });
-            } else {
-                const popupHTML = `
-                <div id="demoPopup" class="popup">
-                    <div class="popup-content">
-                        <span class="close-btn">&times;</span>
-                        <h2>Book a Demo</h2>
-                        <p>Get expert advice on Stamp Duty Land Tax (SDLT) from our team. Choose a time that works best for you to meet with one of our specialists.</p>
-                        <ul>
-                            <li><a class="image-link" href="https://calendly.com/ben-gatford/meeting" target="_blank"><span>Book with Ben Gatford.</span></a></li>
-                            <li><a class="image-link" href="https://calendly.com/adamharris-capex/15min" target="_blank"><span>Book with Adam Harris.</span></a></li>
-                        </ul>
-                    </div>
-                </div>`;
-                document.body.insertAdjacentHTML('beforeend', popupHTML);
-            }
-            // Close popup when clicking outside of the popup content
-            window.addEventListener('click', (event) => {
-                if (event.target === document.getElementById("demoPopup")) {
-                    document.getElementById("demoPopup").classList.remove('visible');
-                }
-            });
-
-            // Show the popup
-            document.getElementById("demoPopup").classList.add('visible');
+            // Show the popup with the visible class for transition
+            demoPopup.classList.add('visible');
         });
     });
+
+    // Close popup when the close button is clicked
+    document.querySelector(".close-btn").addEventListener('click', () => {
+        demoPopup.classList.remove('visible');
+    });
+
+    // Close popup when clicking outside of the popup content
+    window.addEventListener('click', (event) => {
+        if (event.target === demoPopup) {
+            demoPopup.classList.remove('visible');
+        }
+    });
+
 });
 
 
